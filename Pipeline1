@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    
+    triggers {
+        pollSCM('H/2 * * * *')  
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/raspbe2ry/project1.git', branch: 'main'
+            }
+        }
+        stage('Copy file') {
+            steps{
+                script {
+                    def sourceFile = "${WORKSPACE}\\myapp.py"
+                    def desktopDir = "C:\\Users\\nemanja\\Desktop"  
+                    
+                    bat "copy ${sourceFile} ${desktopDir}"
+                }
+            }
+        }
+    }
+}
