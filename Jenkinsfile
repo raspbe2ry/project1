@@ -6,9 +6,8 @@ pipeline {
             steps{
                 script {
                     def sourceFile = "${WORKSPACE}\\myapp.py"
-                    def desktopDir = "C:\\Users\\nemanja\\Desktop"  // Adjust path for your system
+                    def desktopDir = "C:\\Users\\nemanja\\Desktop"  
                     
-                    // Copy the file using 'bat' step and 'copy' command
                     bat "copy ${sourceFile} ${desktopDir}"
                 }
             }
